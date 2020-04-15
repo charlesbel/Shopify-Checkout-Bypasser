@@ -1,4 +1,5 @@
 <?php
+
 //Your Shopify App Credentials
 $app_id = 'YOUR APP ID';
 $app_pass = 'YOUR APP PASS';
