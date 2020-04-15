@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 //Your Stripe Account Api Keys
 $live_public = 'LIVE PUBLIC API KEY';
