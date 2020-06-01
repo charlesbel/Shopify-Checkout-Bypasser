@@ -1,24 +1,9 @@
 <?php
 
-//Your Stripe Account Api Keys
-$live_public = 'LIVE PUBLIC API KEY';
-$live_secret = 'LIVE SECRET API KEY';
-$test_public = 'TEST PUBLIC API KEY';
-$test_secret = 'TEST SECRET API KEY';
-
 //Your Shopify App Credentials
 $app_id = 'APP ID';
 $app_pass = 'APP PASS';
 $store_url = 'MYSHOPIFY DOMAIN';
-
-//Website Pages
-$success_url = 'redirect-order.php?email=' . $_POST['email'];
-$cancel_url = 'CANCEL PAGE';
-
-$enableTest = true;
-
-$stripe_public = $enableTest ? $test_public : $live_public;
-$stripe_secret = $enableTest ? $test_secret : $live_secret;
 
 $body = @file_get_contents('php://input');
 
