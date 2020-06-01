@@ -15,7 +15,7 @@ $paypalConfig = [
 	'email' => 'YOUR_PAYPAL_EMAIL',
 	'return_url' => 'redirect-order.php?email=' . $_POST['email'],
 	'cancel_url' => 'YOUR_CANCEL_PAGE',
-	'notify_url' => 'payments.php'
+	'notify_url' => 'paypal.php'
 ];
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
