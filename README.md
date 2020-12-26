@@ -1,3 +1,13 @@
+[![ForTheBadge built-by-developers](http://ForTheBadge.com/images/badges/built-by-developers.svg)](https://github.com/charlesbel/Shopify-Checkout-Bypasser/)
+[![ForTheBadge uses-git](http://ForTheBadge.com/images/badges/uses-git.svg)](https://GitHub.com/)
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/charlesbel/Shopify-Checkout-Bypasser/)
+
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/charlesbel/Shopify-Checkout-Bypasser/graphs/commit-activity)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/charlesbel/Shopify-Checkout-Bypasser.svg)](http://isitmaintained.com/project/charlesbel/Shopify-Checkout-Bypasser "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/charlesbel/Shopify-Checkout-Bypasser.svg)](http://isitmaintained.com/project/charlesbel/Shopify-Checkout-Bypasser "Percentage of issues still open")
+[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+
 # Shopify Checkout Bypasser #
 A script to bypass the Shopify integrated payment system and create test orders with live payments.
 This script was write in order to bypass the 50 orders limit of the developpements stores on Shopify, so using this script, you can manage as many live orders as you want without paying a Shopify Plan.
