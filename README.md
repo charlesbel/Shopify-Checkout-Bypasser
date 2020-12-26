@@ -6,7 +6,6 @@
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/charlesbel/Shopify-Checkout-Bypasser.svg)](http://isitmaintained.com/project/charlesbel/Shopify-Checkout-Bypasser "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/charlesbel/Shopify-Checkout-Bypasser.svg)](http://isitmaintained.com/project/charlesbel/Shopify-Checkout-Bypasser "Percentage of issues still open")
-[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 # Shopify Checkout Bypasser #
 A script to bypass the Shopify integrated payment system and create test orders with live payments.
