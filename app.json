@@ -1,0 +1,109 @@
+{
+    "name": "Shopify Checkout Bypasser",
+    "repository": "https://github.com/charlesbel/Shopify-Checkout-Bypasser",
+    "logo": "https://cdn.shopify.com/shopify-marketing_assets/static/shopify-favicon.png",
+    "env": {
+        "ENABLE_TEST": {
+            "description": "Enable the test payment on your checkout in order to test it",
+            "value": "false",
+            "required": true
+        },
+        "CURRENCY": {
+            "description": "The currency code of the checkout",
+            "value": "USD",
+            "required": true
+        },
+        "LANG": {
+            "description": "The language tag of the checkout",
+            "value": "en-US",
+            "required": true
+        },
+        "BRANDNAME": {
+            "description": "The brand name of your store",
+            "required": true
+        },
+        "SHOPIFY_APPID": {
+            "description": "Your Shopify app id",
+            "required": true
+        },
+        "SHOPIFY_APPPASS": {
+            "description": "Your Shopify app pass",
+            "required": true
+        },
+        "SHOPIFY_DOMAIN": {
+            "description": "The domain of your Shopify store",
+            "value": "*********.myshopify.com",
+            "required": true
+        },
+        "SHOPIFY_URL_CANCEL": {
+            "description": "The url of the \"Canceled Payment\" page",
+            "value": "https://***********/cart",
+            "required": true
+        },
+        "SHOPIFY_URL_RETURN": {
+            "description": "The url of the redirect-order.php",
+            "value": "https://checkout.************/redirect-order",
+            "required": true
+        },
+        "STRIPE_LIVE_PUBLIC": {
+            "description": "Your Stripe live public api key",
+            "value": "pk_live_*******************************",
+            "required": true
+        },
+        "STRIPE_LIVE_SECRET": {
+            "description": "Your Stripe live secret api key",
+            "value": "sk_live_*******************************",
+            "required": true
+        },
+        "STRIPE_TEST_PUBLIC": {
+            "description": "Your Stripe test public api key",
+            "value": "pk_test_*******************************",
+            "required": true
+        },
+        "STRIPE_TEST_SECRET": {
+            "description": "Your Stripe test secret api key",
+            "value": "sk_test_*******************************",
+            "required": true
+        },
+        "STRIPE_LIVE_WEBHOOK_SECRET": {
+            "description": "Your Stripe live webhook secret",
+            "value": "whsec_*******************************",
+            "required": true
+        },
+        "STRIPE_TEST_WEBHOOK_SECRET": {
+            "description": "Your Stripe test webhook secret",
+            "value": "whsec_*******************************",
+            "required": true
+        },
+        "PAYPAL_LIVE_CLIENTID": {
+            "description": "Your PayPal App live client id",
+            "value": "",
+            "required": true
+        },
+        "PAYPAL_LIVE_SECRET": {
+            "description": "Your PayPal App live secret",
+            "value": "",
+            "required": true
+        },
+        "PAYPAL_SANDBOX_CLIENTID": {
+            "description": "Your PayPal App test client id",
+            "value": "",
+            "required": true
+        },
+        "PAYPAL_SANDBOX_SECRET": {
+            "description": "Your PayPal App test secret",
+            "value": "",
+            "required": true
+        },
+        "PAYPAL_LIVE_WEBHOOKID": {
+            "description": "The id of the live webhook",
+            "value": "",
+            "required": true
+        },
+        "PAYPAL_SANDBOX_WEBHOOKID": {
+            "description": "The id of the sandbox webhook",
+            "value": "",
+            "required": true
+        }
+    }
+}

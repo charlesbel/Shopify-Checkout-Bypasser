@@ -1,0 +1,161 @@
+<form method="post">
+    {% if customer.id == null %}
+    <div class="grid__item medium-up--one-quarter">
+        <label>First Name : </label>
+        <input class="first_name" id="first_name" name="first_name" />
+        <p id="resultat-first_name"></p>
+    </div>
+    <div class="grid__item medium-up--one-quarter">
+        <label>Last Name : </label>
+        <input class="last_name" id="last_name" name="last_name" />
+        <p id="resultat-last_name"></p>
+    </div>
+    <div class="grid__item medium-up--one-quarter">
+        <label>Email Adress : </label>
+        <input class="email" id="email" name="email" />
+        <p id="resultat-email"></p>
+    </div>
+    {% endif %}
+    {% if customer %}
+    <input class="first_name" id="first_name" name="first_name" type="hidden"
+        value="{{ customer.first_name }}" />
+    <input class="last_name" id="last_name" name="last_name" type="hidden" value="{{ customer.last_name }}" />
+    <input class="email" id="email" name="email" type="hidden" value="{{ customer.email }}" />
+    {% endif %}
+    <script>
+        {% if customer.id == null %}
+
+        var emailCorrectMessage = 'The email adress is correct';
+        var firstNameCorrectMessage = 'The first name is correct';
+        var lastNameCorrectMessage = 'The last name is correct'
+
+        var emailIncorrectMessage = 'The email adress is incorrect';
+        var firstNameIncorrectMessage = 'The first name is incorrect';
+        var lastNameIncorrectMessage = 'The last name is incorrect';
+
+        var email_valid = false;
+        var first_name_valid = false;
+        var last_name_valid = false;
+
+        function disable_buttons() {
+            document.getElementById('stripe-btn').disabled = true;
+            document.getElementById('paypal-btn').disabled = true;
+            document.getElementById('paypal-btn').style.opacity = 0.5;
+            document.getElementById('paypal-btn').style.pointerEvents = "none";
+
+        }
+
+        function enable_buttons() {
+            document.getElementById('stripe-btn').disabled = false;
+            document.getElementById('paypal-btn').disabled = false;
+            document.getElementById('paypal-btn').style.removeProperty('opacity');
+            document.getElementById('paypal-btn').style.removeProperty('pointer-events');
+        }
+
+        function checkAllInputs() {
+            if (email_valid == true && first_name_valid == true && last_name_valid == true) {
+                enable_buttons();
+            } else {
+                disable_buttons();
+            }
+        }
+
+        function checkInput(regEx, inputName, successMess, errorMess) {
+            document.getElementById('resultat-' + inputName).innerHTML = '';
+
+            if (regEx.test(document.getElementById(inputName).value)) {
+                document.getElementById('resultat-' + inputName).innerHTML = successMess;
+                document.getElementById('resultat-' + inputName).style.color = 'green';
+
+                window[inputName + '_valid'] = true;
+
+                checkAllInputs();
+
+            } else {
+                document.getElementById('resultat-' + inputName).innerHTML = errorMess;
+                document.getElementById('resultat-' + inputName).style.color = 'red';
+
+                window[inputName + '_valid'] = false;
+
+                checkAllInputs();
+
+            }
+        }
+
+        var email_regEx = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+        var name_regEx = /^(\s|\S)*(\S)+(\s|\S)*$/;
+
+        $(document).ready(function () {
+
+            checkInput(email_regEx, 'email', emailCorrectMessage, '');
+            checkInput(name_regEx, 'first_name', firstNameCorrectMessage, '');
+            checkInput(name_regEx, 'last_name', lastNameCorrectMessage, '');
+
+            $("#email").keyup(function () {
+                checkInput(email_regEx, 'email', emailCorrectMessage, emailIncorrectMessage);
+            }
+            );
+
+            $("#first_name").keyup(function () {
+                checkInput(name_regEx, 'first_name', firstNameCorrectMessage, firstNameIncorrectMessage);
+            }
+            );
+
+            $("#last_name").keyup(function () {
+                checkInput(name_regEx, 'last_name', lastNameCorrectMessage, lastNameIncorrectMessage);
+            }
+            );
+
+        });
+        {% endif %}
+
+        fetch('/cart.js', {
+            method: 'GET'
+        }).then(function (response) {return response.json();}).then(function (json) {
+            document.getElementById("token").value = json["token"];
+        });
+
+    </script>
+    <input id="token" name="token" type="hidden" value="" />
+    {% if customer.id == null %}
+    <div class="grid__item medium-up--one-quarter">
+        <div class="only-mobile">
+            <br />
+        </div>
+        <input id="stripe-btn" type="submit" formaction="https://checkout.*********/stripe/payments"
+            class="btn" name="submit" value="CONTINUER PAR CARTE BANCAIRE" disabled />
+        <br />
+        <br />
+        <button id="paypal-btn" type="submit" formaction="https://checkout.**********/paypal/payments"
+            name="submit" style="border: 0px; background-color: #FFFFFF; opacity: 0.5; pointer-events:none"
+            disabled>
+            <div style="width: 145px" class="only-desktop">
+                {% include 'paypal-button' %}
+            </div>
+            <div class="only-mobile">
+                <img src="https://cdn.shopify.com/s/files/1/0337/9829/1592/files/paypal-smart-checkout-buttons.png?v=1586950140"
+                    style="width: 100%" alt="Continuer avec PayPal" />
+            </div>
+        </button>
+    </div>
+    {% endif %}
+    {% if customer %}
+    <div class="only-mobile">
+        <br />
+    </div>
+    <input id="stripe-btn" type="submit" formaction="https://checkout.*********/stripe/payments" class="btn"
+        name="submit" value="CONTINUER PAR CARTE BANCAIRE" />
+    <br />
+    <br />
+    <button id="paypal-btn" type="submit" formaction="https://checkout.**********/paypal/payments" name="submit"
+        style="border: 0px; background-color: #FFFFFF;">
+        <div style="width: 145px" class="only-desktop">
+            {% include 'paypal-button' %}
+        </div>
+        <div class="only-mobile">
+            <img src="https://cdn.shopify.com/s/files/1/0337/9829/1592/files/paypal-smart-checkout-buttons.png?v=1586950140"
+                style="width: 100%" alt="Continuer avec PayPal">
+        </div>
+    </button>
+    {% endif %}
+</form>
